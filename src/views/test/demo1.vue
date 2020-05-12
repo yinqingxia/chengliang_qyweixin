@@ -17,7 +17,7 @@ export default {
     }
   },
   created () {
-    // this.getCode()
+    this.getCode()
   },
   methods: {
     // 网页授权认证，获取企业微信用户ID
