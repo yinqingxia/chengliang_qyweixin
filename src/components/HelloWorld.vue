@@ -3,6 +3,7 @@
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
     <p>这是我们的框架！ </p>
+    <p><button v-on:click="goDemo1Page">跳转demo1</button></p>
   </div>
 </template>
 
@@ -12,6 +13,13 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods: {
+    goDemo1Page () {
+      this.$router.push({
+        path: 'demo1'
+      })
     }
   }
 }
