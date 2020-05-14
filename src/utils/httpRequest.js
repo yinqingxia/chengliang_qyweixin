@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from 'axios'
 import qs from 'qs'
 import merge from 'lodash/merge'
@@ -6,7 +7,10 @@ const http = axios.create({
   timeout: 1000 * 30,
   withCredentials: true,
   headers: {
-    'Content-Type': 'application/json; charset=utf-8'
+    'Content-Type': 'application/json; charset=utf-8',
+    'Accept':'application/json',
+    // 'appkey':'03ff3fa4-f22a-448e-8bbc-acd13d5e8b26'
+
   }
 })
 
@@ -14,8 +18,8 @@ const http = axios.create({
  * 请求拦截
  */
 http.interceptors.request.use(config => {
-  // config.headers['token'] = Vue.cookie.get('userId') // 请求头带上token
-  config.headers['appKey'] = '606d9bf6-1318-4391-b364-85e071dc9db2' // 请求头带上appKey
+  //config.headers['token'] = Vue.cookie.get('userId') // 请求头带上token
+  config.headers['appKey']='03ff3fa4-f22a-448e-8bbc-acd13d5e8b26'
   return config
 }, error => {
   return Promise.reject(error)
@@ -28,6 +32,7 @@ http.interceptors.request.use(config => {
 http.adornUrl = (actionName) => {
   // 非生产环境 && 开启代理, 接口前缀统一使用[/proxyApi/]前缀做代理拦截!
   return (process.env.NODE_ENV !== 'production' && process.env.OPEN_PROXY ? '/proxyApi/' : window.SITE_CONFIG.baseUrl) + actionName
+
 }
 
 /**

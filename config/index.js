@@ -13,17 +13,17 @@ module.exports = {
     assetsPublicPath: '/',
     // 代理列表, 是否开启代理通过[./dev.env.js]配置
     proxyTable: devEnv.OPEN_PROXY === false ? {} : {
-      '/proxyApi/*':{
-        target: 'http://101.201.196.240:8082',
+      '/proxyApi/*': {
+        target: 'http://iot.bplead.com:8085',
         changeOrigin: true,
         pathRewrite: {
-          '^/proxyApi':'/'
+          '^/proxyApi': '/'
         }
       }
     },
 
     // Various Dev Server settings
-    host: '192.168.1.7', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

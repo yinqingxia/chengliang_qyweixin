@@ -7,9 +7,13 @@ import store from './store'
 import VueCookie from 'vue-cookie'
 import httpRequest from './utils/httpRequest'
 import cloneDeep from 'lodash/cloneDeep'
+import VueMeta from 'vue-meta'
+import VueJsonp from 'vue-jsonp'
 
+Vue.use(VueJsonp)
 Vue.config.productionTip = false
 Vue.use(VueCookie)
+Vue.use(VueMeta)
 
 // 挂载全局
 Vue.prototype.$http = httpRequest // ajax请求方法
