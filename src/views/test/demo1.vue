@@ -17,20 +17,19 @@ export default {
     }
   },
   created () {
-    this.getCode()
+    // this.getCode()
   },
   methods: {
     // 网页授权认证，获取企业微信用户ID
     getUserId () {
       this.$http({
-        url: this.$http.adornUrl('/sys/user/list'),
-        method: 'get',
+        url: this.$http.adornUrl('/Thingworx/Things/blueskydb_Standpackage/Services/package'),
+        method: 'post',
         params: this.$http.adornParams({
-          'code': this.code
+          'barcode': '801010000369'
         })
       }).then(({data}) => {
         console.log(data)
-        this.userId = data.userId
         // 缓存在cookie
         this.$cookie.set('userId', data.userId)
       })

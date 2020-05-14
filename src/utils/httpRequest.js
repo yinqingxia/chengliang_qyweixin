@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import axios from 'axios'
 import qs from 'qs'
 import merge from 'lodash/merge'
@@ -15,7 +14,8 @@ const http = axios.create({
  * 请求拦截
  */
 http.interceptors.request.use(config => {
-  config.headers['token'] = Vue.cookie.get('userId') // 请求头带上token
+  // config.headers['token'] = Vue.cookie.get('userId') // 请求头带上token
+  config.headers['appKey'] = '606d9bf6-1318-4391-b364-85e071dc9db2' // 请求头带上appKey
   return config
 }, error => {
   return Promise.reject(error)
