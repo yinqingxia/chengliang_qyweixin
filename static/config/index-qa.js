@@ -5,7 +5,7 @@
   window.SITE_CONFIG = {}
 
   // api接口请求地址
-  window.SITE_CONFIG['baseUrl'] = 'http://101.201.196.240:8082'
+  window.SITE_CONFIG['baseUrl'] = 'http://iot.bplead.com:8085'
 
   // cdn地址 = 域名 + 版本号
   window.SITE_CONFIG['domain'] = './' // 域名

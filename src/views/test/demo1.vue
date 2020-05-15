@@ -23,10 +23,10 @@ export default {
     // 网页授权认证，获取企业微信用户ID
     getUserId () {
       this.$http({
-        url: this.$http.adornUrl('/Thingworx/Things/blueskydb_Standpackage/Services/package'),
+        url: this.$http.adornUrl('/ThingX/Resources/BorrowListService/Services/GetNotConfirmBorrowList'),
         method: 'post',
-        params: this.$http.adornParams({
-          'barcode': '801010000369'
+        data: this.$http.adornData({
+          'wechatId': 'wx002'
         })
       }).then(({data}) => {
         console.log(data)
@@ -51,7 +51,6 @@ export default {
 
       var r = window.location.search.substr(1).match(reg)
       console.log(r)
-
       if (r != null) return unescape(r[2])
 
       return null
