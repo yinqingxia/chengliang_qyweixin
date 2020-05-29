@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <!--<img src="./assets/logo.png">-->
-    <router-view/>
+     <keep-alive >
+        <router-view v-if="$route.meta.keepAlive"/>
+     </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"/>
+
+
   </div>
 </template>
 
@@ -18,10 +23,10 @@ export default {
   created(){
     // let meta=document.getElementsByTagName('meta')
     // meta.http-equiv="",
-    var i = document.getElementsByTagName("meta");
-
-    i[2]["content"] = "http://iot.bplead.com:8085";
-    i[2]["http-equiv"] = "Access-Control-Allow-Origin";
+    // var i = document.getElementsByTagName("meta");
+    //
+    // i[2]["content"] = "http://iot.bplead.com:8085";
+    // i[2]["http-equiv"] = "Access-Control-Allow-Origin";
 
   },
   // metaInfo(){
@@ -38,11 +43,11 @@ export default {
   //     ]
   //   }
   // },
-  metaInfo:{
-    meta: [
-      { 'http-equiv': 'Access-Control-Allow-Origin', content: 'http://iot.bplead.com:8085' }
-    ]
-  }
+  // metaInfo:{
+  //   meta: [
+  //     { 'http-equiv': 'Access-Control-Allow-Origin', content: 'http://iot.bplead.com:8085' }
+  //   ]
+  // }
 }
 </script>
 

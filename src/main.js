@@ -9,11 +9,14 @@ import httpRequest from './utils/httpRequest'
 import cloneDeep from 'lodash/cloneDeep'
 import VueMeta from 'vue-meta'
 import VueJsonp from 'vue-jsonp'
+import {Toast} from 'vant'
+import 'vant/lib/index.css'
 
 Vue.use(VueJsonp)
 Vue.config.productionTip = false
 Vue.use(VueCookie)
 Vue.use(VueMeta)
+Vue.use(Toast);
 
 // 挂载全局
 Vue.prototype.$http = httpRequest // ajax请求方法

@@ -14,6 +14,7 @@ import result from '@/views/modules/result.vue'
 import borrow from '@/views/modules/borrow.vue'
 import borrowDetail from '@/views/modules/borrowDetail.vue'
 import woReformDetail from '../views/modules/woReformDetail'
+import submitResult from '@/views/modules/submitResult.vue'
 
 Vue.use(Router)
 
@@ -23,37 +24,40 @@ const globalRoutes = [
   { path: '/404', component: notfound, name: '404', meta: { title: '404未找到' } },
   { path: '/demo1', component: demo1, name: 'login', meta: { title: '测试' } },
   {
-    path: '/',
+    path: '/task',
     name: 'task',
     component: task
   },
   {
-    path: '/approval',
+    path: '/task/approval',
     name: 'approval',
-    component: approval
+    component: approval,
+    meta: {
+      keepAlive: true //此组件需要被缓存
+    }
   },
   {
-    path:'/approval/scrapDetail',
+    path:'/task/approval/scrapDetail',
     name:'scrapDetail',
     component: scrapDetail
   },
   {
-    path:'/approval/checkDetail',
+    path:'/task/approval/checkDetail',
     name:'checkDetail',
     component: checkDetail
   },
   {
-    path:'/approval/woScrapDetail',
+    path:'/task/approval/woScrapDetail',
     name:'woScrapDetail',
     component: woScrapDetail
   },
   {
-    path:'/approval/woReformDetail',
+    path:'/task/approval/woReformDetail',
     name:'woReformDetail',
     component: woReformDetail
   },
   {
-    path:'/approval/result',
+    path:'/task/approval/result',
     name:'result',
     component: result
   },
@@ -68,6 +72,15 @@ const globalRoutes = [
     path:'/borrow/borrowDetail',
     name:'borrowDetail',
     component: borrowDetail
+  },
+  {
+    path:'/result',
+    name:'result',
+    component:result
+  },{
+    path:'/submitResult',
+    name:'submitResult',
+    component:submitResult
   }
 ]
 
