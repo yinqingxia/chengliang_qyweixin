@@ -4,6 +4,7 @@
     <p>code：{{code}}</p>
     <p>userId：{{userId}}</p>
     <p><button v-on:click="getUserId()">获取userId</button></p>
+    <p><button v-on:click="getCode()">获取code</button></p>
   </div>
 </template>
 

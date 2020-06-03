@@ -143,6 +143,7 @@
     margin-right: 20px;
     font-size: 14px;
     font-weight:bolder;
+    width:65px;
   }
 
   .line{
@@ -165,6 +166,7 @@
     font-size: 14px;
     font-weight: bolder;
     padding-left:10px;
+    width:80px;
   }
   .bottom_right{
     text-align: left;
@@ -173,7 +175,7 @@
   .btn{
     position: fixed;
     bottom: 22px;
-    left:24px;
+    left:40px;
     line-height:24px;
   }
 

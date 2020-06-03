@@ -15,7 +15,6 @@ module.exports = {
     proxyTable: devEnv.OPEN_PROXY === false ? {} : {
       '/proxyApi/*': {
         target: 'http://iot.bplead.com:8085',
-        //target: 'http://192.168.1.118:8080/proxyApi/',
         changeOrigin: true,
         pathRewrite: {
           '^/proxyApi': '/'
