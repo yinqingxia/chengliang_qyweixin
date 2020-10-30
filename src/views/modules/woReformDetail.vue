@@ -77,7 +77,9 @@
         this.objectID=this.$route.params.objectID;
         this.resource=this.$route.params.resource;
         this.service=this.$route.params.service;
-
+        // alert(this.objectID)
+        // alert(this.resource)
+        // alert(this.service)
         this.GetReformRequestsbyID();
       },
       methods:{
@@ -91,6 +93,7 @@
             })
           }).then(({data}) => {
             console.log(data.rows)
+            // alert("详情长度"+data.rows.length)
             if(data.rows.length>0){
                   this.reformDetail=data.rows[0]
             }

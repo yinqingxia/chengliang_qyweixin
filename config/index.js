@@ -15,12 +15,17 @@ module.exports = {
     proxyTable: devEnv.OPEN_PROXY === false ? {} : {
       '/proxyApi/*': {
         target: 'http://iot.bplead.com:8085',
+      //  target:'http://192.168.1.170:8080',
         changeOrigin: true,
         pathRewrite: {
           '^/proxyApi': '/'
         }
       }
     },
+
+
+
+
 
     // Various Dev Server settings
     host: '192.168.1.118', // can be overwritten by process.env.HOST

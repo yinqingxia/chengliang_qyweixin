@@ -27,7 +27,7 @@
           <div class="radio">
             <label><input type="radio" name="approval" v-model="approval" value="通过" />通过</label>
             <label><input type="radio" name="approval" v-model="approval" value="驳回" style="margin-left:40px;"/>驳回</label>
-            <p>{{approval}}</p>
+            <!--<p>{{approval}}</p>-->
           </div>
         </div>
         <div class="btn" @click="submit">提交</div>
@@ -78,13 +78,14 @@
           console.log("if  isback执行>>>>")
          //this.carryParams = this.$route.params;
           this.carryParams=this.$route.query;
+         // alert(this.carryParams)
           this.url='/ThingX/Things/'+this.carryParams.workflowTemplate+'/Services/UserTaskCallback'
         }
 
 
 
       },
-      mounted() {
+      mounted() {http://iot.bplead.com:8085/
           console.log("mounted方法>>>")
         // 自定义加载图标
         this.$toast.loading({
@@ -138,7 +139,7 @@
         //   this.isback=isback;
         // },
         submit:function () {
-
+         // alert(this.carryParams.instanceID+"   "+this.approval+"   "+this.msg+"   "+this.carryParams.stepID)
           this.$http({
             url: this.$http.adornUrl(this.url),
             method: 'post',
@@ -146,17 +147,22 @@
               instanceId:this.carryParams.instanceID,
               route:this.approval,
               comment:this.msg,
-              stepID:this.carryParams.stepID
+              stepID:this.carryParams.stepID,
+              userID:this.$cookie.get("userId")
             })
           }).then(({data}) => {
-            console.log(data.rows)
-
-            this.taskList=data.rows;
-
-            this.$router.push({name:'result',params: {approval : this.approval }})
+           // alert(data.result)
+            if(data.rows[0].result=="ok"){
+              //this.taskList=data.rows;
+              this.$router.push({name:'result',params: {approval : this.approval }})
+            }else{
+              alert('此条审批任务已完成');
+              this.$router.push({name:'task'})
+            }
 
           }).catch(() =>{
-
+            alert('此条审批任务已完成');
+            this.$router.push({name:'task'})
           })
         }
       }

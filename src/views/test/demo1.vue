@@ -18,7 +18,7 @@ export default {
     }
   },
   created () {
-    // this.getCode()
+     //this.getCode()
   },
   methods: {
     // 网页授权认证，获取企业微信用户ID
@@ -38,7 +38,7 @@ export default {
     getCode () {
       const code = this.getUrlParam('code')
       const local = window.location.href
-      //const local='yqxfeier.vicp.io'
+      alert('getCode方法执行>>>')
       const APPID = 'ww638e7382aac898d5'
       if (code == null || code === '') {
         window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + APPID + '&redirect_uri=' + encodeURIComponent(local) + '&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect'

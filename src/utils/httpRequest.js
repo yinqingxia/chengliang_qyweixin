@@ -19,7 +19,11 @@ const http = axios.create({
  */
 http.interceptors.request.use(config => {
   //config.headers['token'] = Vue.cookie.get('userId') // 请求头带上token
-  config.headers['appKey']='03ff3fa4-f22a-448e-8bbc-acd13d5e8b26'
+  //iot使用
+  //config.headers['appKey']='03ff3fa4-f22a-448e-8bbc-acd13d5e8b26'
+  //配置版
+  config.headers['appKey']=window.SITE_CONFIG.appKey
+  //config.headers['appKey']='ace6044a-ffea-4cbe-9431-7ddb882c69f0'
   return config
 }, error => {
   return Promise.reject(error)

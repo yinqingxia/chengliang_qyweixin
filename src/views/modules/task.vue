@@ -25,6 +25,7 @@
         name: "task",
         data(){
           return {
+            code:'',
               taskList:[ ]
           }
         },
@@ -36,12 +37,45 @@
             loadingType: 'spinner',
             duration:500
           });
-          this.getCurrentUserTask();
+
         },
+      created(){
+          if(this.$cookie.get('userId')){
+            this.getCurrentUserTask();
+          }else{
+
+          }
+
+      },
         components:{
           commonHeader
         },
         methods:{
+          /*getUserId () {
+            alert("task 页面 getUserId code"+this.$cookie.get('code'))
+            this.$http({
+              url: this.$http.adornUrl('/ThingX/Things/TX.Notice.QYWeiXinServer/Services/getUserID'),
+              method: 'post',
+              data: this.$http.adornData({
+                'code': this.$cookie.get('code')
+              })
+            }).then(({data}) => {
+              alert("响应")
+              alert(data.rows.length+"--"+data.rows[0].userID)
+              if(data.rows.length>0){
+                alert("userId"+data.rows[0].userID)
+                this.code=data.rows[0].userID;
+                // 缓存在cookie
+                this.$cookie.set('userId', data.rows[0].userID)
+
+                this.getCurrentUserTask();
+              }else{
+                alert("认证失败，未获得企业微信用户ID")
+              }
+
+
+            })
+          },*/
           todetail(item){
 
             // this.$router.push({name:'approval',params:{
@@ -71,23 +105,21 @@
                 }
               })
 
-
-
-
             eventBus.$emit('getback',0);
           },
           getCurrentUserTask(){
+          //  alert("拿到userId"+this.$cookie.get("userId"))
             this.$http({
               url: this.$http.adornUrl('/ThingX/Resources/WorkTaskService/Services/getCurrentWorkTask'),
               method: 'post',
               data: this.$http.adornData({
-                'wechatId': 'wx003'
+                'wechatId': this.$cookie.get("userId")
               })
             }).then(({data}) => {
               console.log(data.rows)
 
               this.taskList=data.rows;
-
+             // alert(this.taskList)
 
             }).catch(() =>{
 

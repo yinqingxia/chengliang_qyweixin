@@ -40,9 +40,11 @@
       });
     },
     created(){
-      this.$cookie.set('userId','wx002')
 
-      this.GetNotConfirmBorrowList()
+      if(this.$cookie.get('userId')){
+        this.GetNotConfirmBorrowList()
+      }
+
 
     },
     methods:{
@@ -58,19 +60,23 @@
         console.log("携带参数跳转>>>"+item.id)
       },
       GetNotConfirmBorrowList (){
+      //  alert(this.$cookie.get("userId"))
         this.$http({
           url: this.$http.adornUrl('/ThingX/Resources/BorrowListService/Services/GetNotConfirmBorrowList'),
           method: 'post',
           data: this.$http.adornData({
-            'wechatId': 'wx002'
+            'wechatId': this.$cookie.get("userId")
           })
         }).then(({data}) => {
           console.log(data.rows)
+          if(data.rows.length>0){
+
           console.log(data.rows[0].Result)
           console.log(JSON.parse(data.rows[0].Result))
         //  console.log(JSON.parse(data.rows[0].Result)[0].borrowTime)
 
           this.taskList=JSON.parse(data.rows[0].Result)
+          }
 
         })
       }
